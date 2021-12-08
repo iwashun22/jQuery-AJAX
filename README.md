@@ -6,3 +6,20 @@ AJAX is Asynchronous JavaScript And XML. It allows us to get or send data from t
 
 People commonly use `GET` and `POST` request method, but there's more.
 In this tutorial, I am going to just explain the basics to note and memorize myself.
+
+## AJAX method
+
+```js
+$.ajax({
+   type: 'GET', // Request method
+   url: '/users-api', // URL 
+   // in this case Im getting data from 
+   //       http://localhost:<port>/users-api
+   success: function() {
+      
+   }, // this will run if the request was succeeded
+   error: function() {
+
+   } // and this will run if the request was failed
+})
+```
