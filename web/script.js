@@ -13,13 +13,7 @@ $(function() {
       success: function(tasks) {
          $tableList.children().remove();
          $.each(tasks, (i, task) => {
-            $tableList.append(`
-               <tr>
-                  <td>${task.title}</td>
-                  <td>${task.due}</td>
-                  <td><button class="remove"><i class="fas fa-trash"></i></button></td>
-               </tr>
-            `);
+            addToList($tableList, task);
          })
       },
       error: function() {
@@ -39,13 +33,7 @@ $(function() {
             url: '/tasks-api',
             data: task,
             success: function(newTask) {
-               $tableList.append(`
-               <tr>
-                  <td>${newTask.title}</td>
-                  <td>${newTask.due}</td>
-                  <td><button class="remove"><i class="fas fa-trash"></i></button></td>
-               </tr>
-            `);
+               addToList($tableList, newTask);
             }
          });
          console.log('hi');
@@ -53,5 +41,23 @@ $(function() {
       else {
          alert(`Don't leave the form empty...`);
       }
+
+      $taskTitle.val('');
+      $taskStatus.val('');
    })
 })
+
+/**
+ * 
+ * @param {HTMLElement} table
+ * @param {{title, due}} task Add task to the list table
+ */
+function addToList(table, task) {
+   table.append(`
+      <tr>
+         <td>${task.title}</td>
+         <td>${task.due}</td>
+         <td><button class="remove"><i class="fas fa-trash"></i></button></td>
+      </tr>
+   `);
+}
