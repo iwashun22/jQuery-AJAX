@@ -1,0 +1,74 @@
+*{
+   margin: 0;
+   padding: 0;
+}
+
+body{
+   width: 100vw;
+   height: 100vh;
+}
+
+h2{
+   text-align: center;
+   margin: 20px 0;
+}
+
+.list{
+   margin: 10px auto;
+}
+
+.list th{
+   width: 200px;
+   background-color: gray;
+   color: white;
+   line-height: 30px;
+}
+
+.list td{
+   padding-left: 10px;
+   border-left: 2px black solid;
+   border-bottom: 2px black solid;
+}
+
+.list td:nth-child(3){
+   border: none;
+}
+
+.list td i{
+   color: red;
+}
+.list td i:hover{
+   color: rgb(168, 0, 0);
+}
+
+.list td button{
+   border: none;
+   background: none;
+}
+
+.order-form{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   width: 400px;
+   height: 200px;
+   margin: 10px auto;
+}
+
+.order-form input, .order-form button{
+   margin: 10px 0;
+   line-height: 30px;
+   text-align: center;
+   border-radius: 17px;
+   border: 2px black solid;
+}
+
+.order-form button{
+   width: 100px;
+   background-color: rgb(138, 255, 138);
+}
+
+.order-form button:hover{
+   background-color: rgb(95, 177, 95);
+}
