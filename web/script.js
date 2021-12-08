@@ -1,4 +1,4 @@
-const trashIcon = `<i class="fas fa-trash"></i>`;
+const removeIcon = `<i class="fas fa-trash"></i>`;
 
 $(function() {
    const $tableList = $('.list tbody');
@@ -14,6 +14,7 @@ $(function() {
          $tableList.children().remove();
          $.each(tasks, (i, task) => {
             addToList($tableList, task);
+            addRemoveBtn();
          })
       },
       error: function() {
@@ -22,7 +23,6 @@ $(function() {
    })
 
    $submit.on('click', function() {
-      console.log('hi')
       if($taskTitle.val() && $taskStatus.val()){
          const task = { 
             title: $taskTitle.val(), 
@@ -34,9 +34,13 @@ $(function() {
             data: task,
             success: function(newTask) {
                addToList($tableList, newTask);
+               addRemoveBtn();
+            },
+            error: function() {
+               alert('Error sending data...');
             }
          });
-         console.log('hi');
+         console.log('add task');
       }
       else {
          alert(`Don't leave the form empty...`);
@@ -44,20 +48,38 @@ $(function() {
 
       $taskTitle.val('');
       $taskStatus.val('');
-   })
+   });
 })
 
 /**
  * 
  * @param {HTMLElement} table
- * @param {{title, due}} task Add task to the list table
+ * @param {{title: String, due: String}} task Add task to the list table
  */
 function addToList(table, task) {
    table.append(`
       <tr>
          <td>${task.title}</td>
          <td>${task.due}</td>
-         <td><button class="remove"><i class="fas fa-trash"></i></button></td>
+         <td><button class="remove">${removeIcon}</button></td>
       </tr>
    `);
+}
+
+function addRemoveBtn() {
+   const $btn = $('button.remove');
+   $btn.off('click');
+   $btn.on('click', function() {
+      const index = $(this).parent().parent().index();
+      $.ajax({
+         type: 'DELETE',
+         url: `/tasks-api/${index}`,
+         success: function() {
+            $(`.list tbody tr`).eq(index).remove();
+         },
+         error: function() {
+            alert('Can not find data to delete or something went wrong...');
+         }
+      });
+   });
 }

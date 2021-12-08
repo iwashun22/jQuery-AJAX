@@ -34,10 +34,10 @@ h2{
    border: none;
 }
 
-.list td i{
+button.remove{
    color: red;
 }
-.list td i:hover{
+button.remove:hover{
    color: rgb(168, 0, 0);
 }
 

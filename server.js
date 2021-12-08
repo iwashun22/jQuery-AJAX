@@ -36,6 +36,12 @@ app.post('/tasks-api', (req, res) => {
    res.send(newTask);
 })
 
+app.delete('/tasks-api/:index', (req, res) => {
+   const index = +req.params.index;
+   tasks = tasks.filter((task, i) => i !== index);
+   res.send('Deleted task');
+})
+
 app.listen(3000, () => {
    const now = new Date();
    console.log(`[${now}] Server is listening on port 3000...`);
