@@ -76,6 +76,7 @@ function addRemoveBtn() {
          url: `/tasks-api/${index}`,
          success: function() {
             $(`.list tbody tr`).eq(index).remove();
+            console.log('Deleted task');
          },
          error: function() {
             alert('Can not find data to delete or something went wrong...');
