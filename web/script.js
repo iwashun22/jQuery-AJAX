@@ -48,7 +48,7 @@ $(function() {
    });
 
    $tableList.delegate('.remove', 'click', function() {
-      const index = $(this).parent().parent().index();
+      const index = $(this).closest('tr').index();
       $.ajax({
          type: 'DELETE',
          url: `/tasks-api/${index}`,
