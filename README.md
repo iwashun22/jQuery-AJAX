@@ -12,9 +12,9 @@ In this tutorial, I am going to just explain the basics to note and memorize mys
 ```js
 $.ajax({
    type: 'GET', // Request method
-   url: '/users-api', // URL 
+   url: '/tasks-api', // URL 
    // in this case Im getting data from 
-   //       http://localhost:<port>/users-api
+   //       http://localhost:3000/tasks-api
    data: { ...json }, // the data to send, use for POST, PUT... methods
    success: function() {
       
