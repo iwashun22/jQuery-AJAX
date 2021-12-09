@@ -15,7 +15,7 @@ $.ajax({
    url: '/users-api', // URL 
    // in this case Im getting data from 
    //       http://localhost:<port>/users-api
-   data: { ...json }, // the data to send, use for POST, PUT... method
+   data: { ...json }, // the data to send, use for POST, PUT... methods
    success: function() {
       
    }, // this will run if the request was succeeded
